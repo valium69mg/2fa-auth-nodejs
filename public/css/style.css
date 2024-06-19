@@ -1,0 +1,101 @@
+body {
+    background-color: #6DC5D1;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    padding: 12px 24px;
+    gap: 12px 24px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: black;
+}
+
+.navbar a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+/* HOME */
+
+.homeBody {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.homeBody a {
+    text-decoration: none;
+    color: black;
+}
+
+.homeBody a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+/* LOGIN FORM */
+
+.loginForm {
+    width: 300px;
+    height: 400px;
+    background-color: #F1F1F1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px 24px;
+    padding: 24px 36px;
+    border-radius: 12px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.loginBody {
+    display: flex;
+    flex-direction: column;
+    gap: 12px 24px;
+}
+
+.loginBody button {
+    width: 50%;  
+    padding: 6px 12px;
+    align-self: center;
+    margin-top: 36px;
+}
+
+/* SIGNUP FORM */
+.signupForm {
+    width: 300px;
+    height: 400px;
+    background-color: #F1F1F1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px 24px;
+    padding: 24px 36px;
+    border-radius: 12px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.signupBody {
+    display: flex;
+    flex-direction: column;
+    gap: 12px 24px;
+}
+
+.signupBody button {
+    width: 50%;  
+    padding: 6px 12px;
+    align-self: center;
+    margin-top: 36px;
+}

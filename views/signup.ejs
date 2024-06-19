@@ -1,0 +1,17 @@
+<%- include('./partials/head.ejs') %>
+<%- include('./navbar.ejs') %>
+<div class="signupForm">
+    <h1> Sign Up </h1>
+    <form method="POST" action="/auth/signup" >
+        <div class="signupBody">
+        <label for="mail"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" name="mail" id="mail" required>
+    
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" id="password" required>
+
+        <button type="submit"> Sign Up</button>
+        </div>
+    </form>
+</div>
+<%- include('./partials/footer.ejs') %>

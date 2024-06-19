@@ -1,0 +1,9 @@
+<%- include('./partials/head.ejs') %>
+<%- include('./navbar.ejs') %>
+<div class="homeBody">
+    <% if (data) {%>
+    <h1> Welcome to my server! </h1>
+    <p> <%= data.token %></p>
+    <% }  %>
+</div>
+<%- include('./partials/footer.ejs') %>
