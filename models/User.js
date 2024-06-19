@@ -77,6 +77,20 @@ module.exports.updateUserToken = async function (mail,newToken) {
     }
 };
 
+// VALIDATE TOKEN
+module.exports.validateUserToken = async function (mail,token) {
+    const client = await databaseController.createClient();
+    await client.connect();
+    const response = await databaseController.validateToken(mail,token,client);
+    if (response instanceof Error) {
+        return "Problem fetching data";
+    } else if(response === null) {
+        return "User not found";
+    } else {
+        return true;
+    }
+}
+
 // DELETE USER
 module.exports.deleteUser = async function (mail) {
     const client = await databaseController.createClient();

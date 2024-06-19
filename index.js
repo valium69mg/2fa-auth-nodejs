@@ -52,6 +52,16 @@ app.get('/refresh', jwtAuth.validateJwt, async(req,res) => {
   }
 });
 
+app.get('/validate/:token',jwtAuth.validateJwt, async(req,res) => {
+  let tokenToValidate = req.params.token; 
+  let token = await User.validateUserToken(req.mail,tokenToValidate);
+  if (token === true) {
+    res.send("true");
+  } else {
+    res.send(token);
+  }
+});
+
 
 // clear session
 app.get('/clearCookies', (req,res) => {

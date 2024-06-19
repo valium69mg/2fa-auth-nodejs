@@ -1,3 +1,4 @@
+const { response } = require('express');
 const {Client} = require('pg');
 
 // CREATE CLIENT
@@ -116,6 +117,22 @@ module.exports.updateUserToken = async function (mail,newToken,client) {
     client.end();
   }
 };
+
+//VALIDATE TOKEN
+module.exports.validateToken = async function (mail,token,client){
+  try {
+    const reponse = await client.query("SELECT token FROM users WHERE mail = $1 AND token = $2",[mail,token]);
+    if (response.rowCount !== 0) {
+      return response.data;
+    } else {
+      return null;
+    }
+  } catch(err) {
+    return err;
+  }finally{
+    client.end();
+  }
+}
 
 // DELETE USER
 module.exports.deleteUser = async function (mail,client) {
