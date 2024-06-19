@@ -38,8 +38,18 @@ app.get('/',jwtAuth.validateJwt, async (req, res) => {
   if (updateToken instanceof Error) {
     newToken = "Error updating token at the user model";
   } 
-  const data = {auth:true,token: newToken};
-  res.render('home.ejs',{data});
+  const session = {auth:true,token: newToken};
+  res.render('home.ejs',{session});
+});
+
+app.get('/refresh', jwtAuth.validateJwt, async(req,res) => {
+  let newToken = genToken();
+  let updateToken = await User.updateUserToken(req.mail,newToken);
+  if (updateToken instanceof Error) {
+    res.send("");
+  } else {
+    res.send(newToken);
+  }
 });
 
 

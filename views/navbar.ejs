@@ -2,9 +2,5 @@
     <a href="/"> Home </a>
         <a href="/auth/signup"> Sign Up </a>
         <a href="/auth/login"> Log In </a>
-        <% if (typeof data !== 'undefined') {%>
-            <% if (data.auth === true) { %>
-                <a class="logoutLink" href="/auth/logout"> Log Out </a>
-            <% } %>
-        <%} %>
+        <a class="logoutLink" href="/auth/logout"> Log Out </a>
 </nav>

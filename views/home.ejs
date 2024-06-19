@@ -1,9 +1,36 @@
 <%- include('./partials/head.ejs') %>
 <%- include('./navbar.ejs') %>
 <div class="homeBody">
-    <% if (data) {%>
-    <h1> Welcome to my server! </h1>
-    <p> <%= data.token %></p>
+    <% if (session) {%>
+    <h1> <span id="token"> <%= session.token %> </span> </h1>
+    <progress id="percentage" value="0" max="100"> </progress>
     <% }  %>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        let currentValueProgress;
+        let newValueProgress;
+        setInterval(function() {
+            currentValueProgress = $("#percentage").val();
+            if (currentValueProgress == "100") {
+                $.ajax({
+                    "url":"http://localhost:3000/refresh",
+                    "success":function(data) {
+                        $("#token").html(data);
+                    },
+                    "error": function(error) {
+                        console.log(error);
+                    }
+                });
+                currentValueProgress = "0";
+                $("#percentage").val(currentValueProgress);
+            } else {
+                newValueProgress = parseInt(currentValueProgress) + 10;
+                currentValueProgress = newValueProgress.toString();
+                $("#percentage").val(currentValueProgress);
+            }
+        },1000)
+    })
+</script>
 <%- include('./partials/footer.ejs') %>
