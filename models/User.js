@@ -19,10 +19,10 @@ module.exports.createUser = async function (mail,password,token) {
 };
 
 //VERIFY USER
-module.exports.verifyUser = async function (mail,password) {
+module.exports.verifyUser = async function (mail) {
     const client = await databaseController.createClient();
     await client.connect();
-    const response = await databaseController.verifyUser(mail,password,client);
+    const response = await databaseController.verifyUser(mail,client);
     if (response === true) {return true}
     return false;
 };

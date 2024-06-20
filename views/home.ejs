@@ -1,5 +1,8 @@
 <%- include('./partials/head.ejs') %>
-<%- include('./navbar.ejs') %>
+<nav class="navbar">
+    <a href="/"> Code </a>
+    <a class="logoutLink" href="/auth/logout"> Log Out </a>
+</nav>
 <div class="homeBody">
     <% if (session) {%>
     <div class="container">

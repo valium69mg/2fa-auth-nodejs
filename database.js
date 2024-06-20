@@ -50,10 +50,10 @@ module.exports.createUser = async function (mail,password,token,client) {
 };
 
 // VERIFY USER
-module.exports.verifyUser = async function (mail,password,client) {
+module.exports.verifyUser = async function (mail,client) {
   try {
-    const response = await client.query("SELECT * FROM users WHERE mail=$1 AND password=$2",
-    [mail,password]
+    const response = await client.query("SELECT * FROM users WHERE mail=$1",
+    [mail]
     );
     if (response.rowCount === 1) {return true}
   }catch(err) {

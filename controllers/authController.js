@@ -9,17 +9,21 @@ module.exports.signup_get = async (req,res) => {
 
 module.exports.signup_post = async (req,res) => {
     const {mail,password} = req.body; 
-    // HASHING PASSWORDS
-    bcrypt.hash(password, parseInt(process.env.SALT_ROUNDS), async function(err, hash) {
-        let token = genToken();
-        const createUser = await User.createUser(mail,hash,token);
-        if (createUser instanceof Error) {
-            res.status(400).json({error: 'Oops, something went wrong'}); 
-        } else {
-            res.status(201).redirect('/');
-        }
-        
-    });  
+    const validateMail = await User.verifyUser(mail);
+    if (validateMail === true) { // IN CASE USER ALREADY EXISTS
+        res.redirect('/auth/signup');
+    } else {
+        // HASHING PASSWORDS
+        bcrypt.hash(password, parseInt(process.env.SALT_ROUNDS), async function(err, hash) {
+            let token = genToken();
+            const createUser = await User.createUser(mail,hash,token);
+            if (createUser instanceof Error) {
+                res.status(400).json({error: 'Oops, something went wrong'}); 
+            } else {
+                res.status(201).redirect('/');
+            }        
+        });  
+    }
 }
 
 module.exports.login_get = async (req,res) => {
