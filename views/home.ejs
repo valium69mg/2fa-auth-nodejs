@@ -2,8 +2,10 @@
 <%- include('./navbar.ejs') %>
 <div class="homeBody">
     <% if (session) {%>
-    <h1> <span id="token"> <%= session.token %> </span> </h1>
-    <progress id="percentage" value="0" max="100"> </progress>
+    <div class="container">
+        <h1> <span id="token"> <%= session.token %> </span> </h1>
+        <progress id="percentage" value="0" max="100"> </progress>
+    </div>
     <% }  %>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
