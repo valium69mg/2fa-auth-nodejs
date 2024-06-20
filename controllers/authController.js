@@ -11,7 +11,8 @@ module.exports.signup_post = async (req,res) => {
     const {mail,password} = req.body; 
     const validateMail = await User.verifyUser(mail);
     if (validateMail === true) { // IN CASE USER ALREADY EXISTS
-        res.redirect('/auth/signup');
+        error = {error:true};
+        res.render('signup.ejs',{error});
     } else {
         // HASHING PASSWORDS
         bcrypt.hash(password, parseInt(process.env.SALT_ROUNDS), async function(err, hash) {

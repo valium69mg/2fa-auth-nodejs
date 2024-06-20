@@ -11,8 +11,11 @@
     
         <label for="password"><b>Password</b></label>
         <input type="password" placeholder="Enter Password" name="password" id="password" required>
-
+        <% if (typeof error !== 'undefined') { %>
+            <p class="error"> User already exists! </p>
+       <%  } %>
         <button type="submit"> Sign Up</button>
+        
         </div>
     </form>
 </div>
